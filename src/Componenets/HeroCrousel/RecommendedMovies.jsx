@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function RecommendedMovies(props) {
   const settings = {
+    initialSlide: 4,
     infinite: false,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -15,6 +16,7 @@ export default function RecommendedMovies(props) {
       {
         breakpoint: 1024,
         settings: {
+          initialSlide: 4,
           slidesToShow: 4,
           slidesToScroll: 4,
           infinite: true,
@@ -24,6 +26,7 @@ export default function RecommendedMovies(props) {
       {
         breakpoint: 600,
         settings: {
+          initialSlide: 4,
           slidesToShow: 3,
           slidesToScroll: 3,
           initialSlide: 2,
@@ -34,9 +37,7 @@ export default function RecommendedMovies(props) {
   const { recommendedimages, title, subtitle, isDark } = props;
 
   return (
-
-
-       <div
+    <div
       className={`${
         isDark ? "bg-background-blue" : "bg-background-white"
       } sm:px-4`}
@@ -70,6 +71,5 @@ export default function RecommendedMovies(props) {
         ))}
       </HeroSlider>
     </div>
-
-    );
+  );
 }

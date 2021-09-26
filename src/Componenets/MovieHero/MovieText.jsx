@@ -29,7 +29,7 @@ export default function MovieText() {
     };
 
     reqSimilarMovies();
-  }, []);
+  }, [id]);
 
   const SettingsCast = {
     infinite: false,
