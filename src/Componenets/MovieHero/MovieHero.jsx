@@ -1,17 +1,28 @@
 import React, { useState, useContext } from "react";
 import { MovieContext } from "../../Context/Movie.context";
+import PaymentModal from "../PaymentModal/Payment";
 import MovieInfo from "./MovieInfo";
 
-
-
 export default function MovieHero() {
-  const {movie} = useContext(MovieContext);
+  const { movie } = useContext(MovieContext);
   const genres = movie.genres?.map(({ name }) => name).join(", ");
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [price, setPrice] = useState(0);
 
+  const rentMovies = () => {
+    setIsOpen(true);
+    setPrice(149);
+  };
+
+  const buyMovie = () => {
+    setIsOpen(true);
+    setPrice(599);
+  };
 
   return (
     <>
+      <PaymentModal setIsOpen={setIsOpen} isOpen={isOpen} price={price} />
       <div>
         {/*mobile and medium devices*/}
         <div className="lg:hidden w-full ">
@@ -32,10 +43,16 @@ export default function MovieHero() {
             <h6 className="md:block sm:hidden ">{movie.overview}</h6>
           </div>
           <div className="flex flex-row gap-2 p-3">
-            <button className="p-1 bg-red-500 text-white text-center font-bold w-full rounded-md">
+            <button
+              onClick={rentMovies}
+              className="p-1 bg-red-500 text-white text-center font-bold w-full rounded-md"
+            >
               Rent ₹129
             </button>
-            <button className="bg-red-500 text-white text-center font-bold w-full rounded-md">
+            <button
+              onClick={buyMovie}
+              className="bg-red-500 text-white text-center font-bold w-full rounded-md"
+            >
               Buy ₹599
             </button>
           </div>
@@ -63,9 +80,8 @@ export default function MovieHero() {
                   alt="Movie Poster"
                   className="w-full h-full rounded-xl"
                 />
-               
               </div>
-              <MovieInfo movie={movie}/>
+              <MovieInfo movie={movie} />
             </div>
             <img
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
