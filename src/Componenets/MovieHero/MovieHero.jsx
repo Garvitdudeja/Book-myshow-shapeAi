@@ -56,8 +56,8 @@ export default function MovieHero() {
               }}
             ></div>
 
-            <div className="absolute z-30 left-24 top-10 flex items-center gap-10">
-              <div className="w-64 h-96">
+            <div className="absolute z-30 left-24  top-10 flex items-center gap-10">
+              <div className="h-96 w-80">
                 <img
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt="Movie Poster"
